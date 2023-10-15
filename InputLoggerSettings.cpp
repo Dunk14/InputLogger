@@ -3,7 +3,9 @@
 
 void InputLogger::RenderSettings() 
 {
-    ImGui::InputText("Key to toggle inputs logging.", &savekey);
+    if (ImGui::InputText("Key to toggle inputs logging.", &toggleInputLogsKey)) {
+        cvarManager->getCvar("toggleInputLogsKey").setValue(toggleInputLogsKey);
+    }
 
     ImGui::Text("Logs will be saved in %appdata%/bakkesmod/bakkesmod/data/inputLogs/*.csv");
 }
